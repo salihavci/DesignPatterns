@@ -1,10 +1,10 @@
-﻿using BaseProject.Models;
+﻿using WebApp.Template.Models;
 using DesignPatterns.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace BaseProject.Controllers
+namespace WebApp.Template.Controllers
 {
     public class AccountController : Controller
     {

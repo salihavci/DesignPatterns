@@ -1,4 +1,4 @@
-﻿using BaseProject.Models;
+﻿using WebApp.Template.Models;
 using DesignPatterns.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

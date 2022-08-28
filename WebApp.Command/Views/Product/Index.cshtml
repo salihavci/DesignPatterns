@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a class="btn btn-primary" asp-controller="product" asp-action="CreateFile" asp-route-type="@((int)EFileType.Excel)">Create Excel</a>
+    <a class="btn btn-primary" asp-controller="product" asp-action="CreateFile" asp-route-type="@((int)EFileType.PDF)">Create PDF</a>
+    <a class="btn btn-primary" asp-controller="product" asp-action="CreateFiles">Create Excel & PDF</a>
+
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Stock
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

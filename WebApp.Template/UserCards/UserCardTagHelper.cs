@@ -1,4 +1,4 @@
-﻿using BaseProject.Models;
+﻿using WebApp.Template.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Threading.Tasks;
