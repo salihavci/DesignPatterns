@@ -9,5 +9,7 @@ namespace WebApp.Composite.Models
         {
 
         }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Book> Books { get; set; }
     }
 }
