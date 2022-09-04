@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
@@ -11,6 +12,7 @@ namespace WebApp.Composite.Composite
         public string Name { get; set; }
         private List<IComponent> _components;
 
+        public IReadOnlyCollection<IComponent> Components => _components; //Private bir değişkeni readonly public olarak açmak için 
         public BookComposite(int Id, string Name)
         {
             this.Id = Id;
@@ -37,7 +39,7 @@ namespace WebApp.Composite.Composite
             
             if (!_components.Any()) return sb.ToString();
 
-            sb.Append("<ul class='list-group list-group-flush ml-3'>");
+            sb.Append("<ul class='list-group list-group-flush ms-3'>");
 
             foreach (var item in _components)
             {
@@ -47,6 +49,23 @@ namespace WebApp.Composite.Composite
             sb.Append("</ul>");
 
             return sb.ToString();
+        }
+        
+        public List<SelectListItem> GetSelectListItems(string line)
+        {
+            var list = new List<SelectListItem> { new SelectListItem($"{line}{Name}",Id.ToString()) };
+            if(_components.Any(x=> x is BookComposite)) //x => BookComposite ise
+            {
+                line += " - ";
+            }
+            _components.ForEach(x =>
+            {
+                if (x is BookComposite bookComposite) //x=> BookComposite ise bookComposite değişkenini al
+                {
+                    list.AddRange(bookComposite.GetSelectListItems(line));
+                }
+            });
+            return list;
         }
     }
 }
