@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "AddWatermark";
+}
+
+
+<form asp-controller="Home" asp-action="AddWatermark" enctype="multipart/form-data" method="post">
+    <input type="file" name="image" class="form-control my-1" />
+    <input type="submit" value="Kaydet" class="btn btn-primary" />
+</form>
